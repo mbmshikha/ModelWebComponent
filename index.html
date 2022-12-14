@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="script.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <uc-model>
+      <h1 slot="title">Please confirm</h1>
+      <p slot="content">
+        With the confirmation you are able to pay full amount
+      </p>
+    </uc-model>
+
+    <p>Please confirm your choice</p>
+    <button>Show Details and Confirm</button>
+    <script>
+      const btn = document.querySelector("button");
+      const model = document.querySelector("uc-model");
+      btn.addEventListener("click", () => {
+        // model.setAttribute("opened", "");
+        model.open();
+      });
+
+      model.addEventListener("confirm transation", () => {
+        console.log("confirm transaction");
+      });
+      model.addEventListener("close", (event) => {
+        model.hide();
+        console.log("hide popup");
+      });
+    </script>
+  </body>
+</html>
